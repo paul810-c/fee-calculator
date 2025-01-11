@@ -62,8 +62,8 @@ class CalculateFeeCommandTest extends TestCase
     public static function validLoanProviderData(): array
     {
         return [
-            [12, 1001, 550], // £1001.00 => 55 cents
-            [24, 20000, 750], // £200.00 => 75 cents
+            [12, 1001, 550],
+            [24, 20000, 750],
         ];
     }
 
@@ -92,7 +92,7 @@ class CalculateFeeCommandTest extends TestCase
 
         $this->commandTester->execute([
             'term' => 24,
-            'amount' => 500, // Below the valid range
+            'amount' => 500,
         ]);
 
         $output = $this->commandTester->getDisplay();

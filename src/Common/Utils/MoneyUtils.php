@@ -15,9 +15,4 @@ class MoneyUtils
     {
         return $amountInCents / 100;
     }
-
-    public static function roundUpToNearestFive(int $amountInCents): int
-    {
-        return (int) ceil($amountInCents / 5) * 5;
-    }
 }

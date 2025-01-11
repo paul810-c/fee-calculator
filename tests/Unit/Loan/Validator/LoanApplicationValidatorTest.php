@@ -20,7 +20,7 @@ class LoanApplicationValidatorTest extends TestCase
 
     public function testValidInputs(): void
     {
-        $this->validator->validate(LoanTerm::TWELVE_MONTHS->value, 150000); // 150
+        $this->validator->validate(LoanTerm::TWELVE_MONTHS->value, 150000);
         $this->addToAssertionCount(1);
     }
 
@@ -37,7 +37,7 @@ class LoanApplicationValidatorTest extends TestCase
         $this->expectException(LoanValidationException::class);
         $this->expectExceptionMessage('Loan amount must be between £1,000 and £20,000.');
 
-        $this->validator->validate(LoanTerm::TWELVE_MONTHS->value, 500); // Below range
+        $this->validator->validate(LoanTerm::TWELVE_MONTHS->value, 500);
     }
 
     public function testInvalidAmountThrowsExceptionAboveRange(): void
@@ -45,6 +45,6 @@ class LoanApplicationValidatorTest extends TestCase
         $this->expectException(LoanValidationException::class);
         $this->expectExceptionMessage('Loan amount must be between £1,000 and £20,000.');
 
-        $this->validator->validate(LoanTerm::TWELVE_MONTHS->value, 25000); // Above range
+        $this->validator->validate(LoanTerm::TWELVE_MONTHS->value, 25000);
     }
 }

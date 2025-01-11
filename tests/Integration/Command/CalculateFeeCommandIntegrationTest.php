@@ -21,14 +21,12 @@ class CalculateFeeCommandIntegrationTest extends TestCase
 
     protected function setUp(): void
     {
-        // Instantiate all dependencies
         $repository = new InMemoryFeeRepository();
         $boundFinder = new BoundFinder();
         $interpolationStrategy = new LinearInterpolation();
         $roundingService = new RoundUpToNearestFive();
         $validator = new LoanApplicationValidator();
 
-        // Pass all dependencies to FeeCalculator
         $calculator = new FeeCalculator(
             repository: $repository,
             boundFinder: $boundFinder,
@@ -36,7 +34,6 @@ class CalculateFeeCommandIntegrationTest extends TestCase
             roundingService: $roundingService
         );
 
-        // Create the command with the FeeCalculator and Validator
         $command = new CalculateFeeCommand($calculator, $validator);
         $this->commandTester = new CommandTester($command);
     }

@@ -32,15 +32,13 @@ abstract class BaseFeeCalculator implements FeeCalculatorInterface
         $lowerBound = $this->boundFinder->findLowerBound($fees, $amountInPounds);
         $upperBound = $this->boundFinder->findUpperBound($fees, $amountInPounds);
 
-        // Perform interpolation
         $fee = $this->interpolationStrategy->interpolate($fees, $lowerBound, $upperBound, $amountInPounds);
-        // Convert the fee back to cents for internal consistency
+
         $feeInCents = MoneyUtils::toCents($fee);
 
         // Calculate the total and round up to the nearest multiple of 5 cents
         $totalInCents = $application->amountInCents + $feeInCents;
 
-        // Apply rounding to the total amount and subtract the original amount to get the rounded fee
         return $this->roundingService->round($totalInCents) - $application->amountInCents;
     }
 
