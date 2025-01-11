@@ -26,44 +26,41 @@ Given a monetary **amount** and a **term** (the contractual duration of the loan
 
 ## Running the Project
 
-You can run the project using one of the following methods:
-
-### **1. Using Docker**
-
-1. Build and Start the Docker Container:
+1. Copy and configure the `.env` file with your MySQL settings:
+   ```bash
+   cp .env.example .env
+   ```
+   
+2. Build and Start the Docker Container:
    ```bash
    docker-compose up --build
    ```
 
-2. Connect to the Container Shell:
+3. Connect to the Container Shell:
    ```bash
    docker exec -it <container-name> sh
    ```
 
-3. Install Dependencies:
+4. Install Dependencies:
    ```bash
    composer install
    ```
 
-4. Run the Symfony Console Command:
+5. Run Database Migrations:
+   ```bash
+   vendor/bin/phinx migrate -c phinx.php
+   ```
+
+6. Seed the Database:
+   ```bash
+   vendor/bin/phinx seed:run -c phinx.php
+   ```
+   
+7. Run the Symfony Console Command:
    ```bash
    php /app/app.php app:calculate-fee <term> <amount>
    ```
    Replace `<term>` and `<amount>` with the desired inputs (e.g., `12 1000`).
-
-### **2. Directly on the Host Machine**
-
-1. Install Dependencies:
-   ```bash
-   composer install
-   ```
-
-2. Run the Symfony Console Command:
-   ```bash
-   php app.php app:calculate-fee <term> <amount>
-   ```
-
-Replace `<term>` and `<amount>` with the desired inputs (e.g., `12 1000`).
 
 ---
 
@@ -117,11 +114,15 @@ PHPStan is used to perform static analysis on the codebase.
 - `/tests`: Contains all test cases.
     - `/Unit`: Unit tests.
     - `/Integration`: Integration tests.
+- `/db`: Contains database migrations and seeders.
+    - `/migrations`: Database migration files.
+    - `/seeds`:  Seeder files for populating the database.
 - `/vendor`: Contains installed dependencies (ignored by Git).
 
 ---
 
 ## Notes
 - Ensure that `composer install` is run inside the container or locally to install dependencies.
+- Run migrations and seeders after setting up the project to populate the database.
 - Ensure that `app.php` is executable and properly configured to execute the Symfony Console commands.
 

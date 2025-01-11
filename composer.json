@@ -18,6 +18,8 @@
     },
     "require": {
         "php": "^8.2",
-        "symfony/console": "*"
+        "ext-pdo": "*",
+        "symfony/console": "*",
+        "robmorgan/phinx": "^0.16.6"
     }
 }
