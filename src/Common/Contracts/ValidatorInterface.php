@@ -6,5 +6,5 @@ namespace FinCalc\LoanFeeCalculator\Common\Contracts;
 
 interface ValidatorInterface
 {
-    public function validate(int $term,  int $amount): void;
+    public function validate(int $term, int $amount): void;
 }

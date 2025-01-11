@@ -17,7 +17,8 @@ abstract class BaseFeeCalculator implements FeeCalculatorInterface
         private readonly BoundFinderInterface $boundFinder,
         private readonly InterpolationInterface $interpolationStrategy,
         private readonly RoundingServiceInterface $roundingService
-    ) {}
+    ) {
+    }
 
     public function calculate(LoanApplication $application): int
     {
