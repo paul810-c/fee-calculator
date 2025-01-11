@@ -1,0 +1,23 @@
+{
+    "name": "fincalc/fee-loan-calculator",
+    "type": "project",
+    "autoload": {
+      "psr-4": {
+        "FinCalc\\LoanFeeCalculator\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "FinCalc\\LoanFeeCalculator\\Tests\\": "tests/"
+      }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "^2.1",
+        "squizlabs/php_codesniffer": "^3.11"
+    },
+    "require": {
+        "php": "^8.2",
+        "symfony/console": "*"
+    }
+}

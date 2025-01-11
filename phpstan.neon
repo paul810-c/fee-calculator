@@ -1,0 +1,10 @@
+parameters:
+    level: 8
+    paths:
+        - src
+    excludePaths:
+        analyseAndScan:
+            - vendor
+            - tests
+    ignoreErrors:
+        - '#no value type specified in iterable type array#'
